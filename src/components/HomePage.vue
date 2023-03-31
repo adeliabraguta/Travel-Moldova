@@ -1,13 +1,12 @@
 <script setup>
-import {ref} from 'vue'
 import {useCycleList} from "@vueuse/core";
 import {Icon} from "@iconify/vue";
 import GuideComponent from "./GuideComponent.vue";
+import guides from "./imports.js"
 import carousel1 from "../assets/carousel1.jpg"
 import carousel2 from "../assets/carousel2.jpg"
 import carousel3 from "../assets/carousel3.jpg"
 
-const count = ref(0)
 
 const {state, next, prev} = useCycleList([
     carousel1,
@@ -43,7 +42,7 @@ const {state, next, prev} = useCycleList([
                 <li class="element">Capriana Monastery</li>
                 <li class="element">Soroca Fortress</li>
                 <li class="element">Old Orhei</li>
-                <li class="element">Turcari Winery</li>
+                <li class="element">Purcari Winery</li>
 
             </ul>
         </div>
@@ -54,9 +53,11 @@ const {state, next, prev} = useCycleList([
             <div class="guides">
                 <h2 class="title">FEATURED TRAVEL GUIDES</h2>
                 <div class="list">
-                    <guide-component/>
-
+                    <div class="item" v-for="guide in guides">
+                        <guide-component :title="guide.title" :img="guide.img" :address="guide.address"/>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -183,12 +184,11 @@ const {state, next, prev} = useCycleList([
   .guide {
     box-shadow: inset 0 10px 10px -10px rgba(33, 35, 38, 0.05),
     inset 0 -10px 10px -10px rgba(33, 35, 38, 0.05);
-
     background-color: #F0F4F8;
 
     .title {
       margin: 0;
-      padding: 48px 0;
+      padding: 64px 0;
       color: #014D40;
       font-weight: 600;
 
@@ -197,24 +197,26 @@ const {state, next, prev} = useCycleList([
   }
 
   .guides {
-      padding: 0 96px;
-      padding-bottom: 48px;
+    padding: 0 96px;
+    padding-bottom: 48px;
 
-      .title {
-          display: flex;
-          align-items: flex-start;
-          margin: 0;
-          padding: 48px 0;
-          color: #102A43;
+    .title {
+      display: flex;
+      align-items: flex-start;
+      margin: 0;
+      padding: 48px 0;
+      color: #102A43;
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 64px;
+
+      .item {
       }
+    }
 
-      .list {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 64px;
-
-
-  }
   }
 }
 </style>
