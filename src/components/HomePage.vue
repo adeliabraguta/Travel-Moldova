@@ -6,13 +6,17 @@ import guides from "./imports.js"
 import carousel1 from "../assets/carousel1.jpg"
 import carousel2 from "../assets/carousel2.jpg"
 import carousel3 from "../assets/carousel3.jpg"
-
+import {useLikedChart} from "./Likes.js";
+import {ref} from "vue";
 
 const {state, next, prev} = useCycleList([
     carousel1,
     carousel2,
     carousel3
 ])
+
+const likedChart = useLikedChart()
+const filter = ref('all')
 </script>
 
 <template>
@@ -53,10 +57,11 @@ const {state, next, prev} = useCycleList([
             <div class="guides">
                 <h2 class="title">FEATURED TRAVEL GUIDES</h2>
                 <div class="list">
-                    <div class="item" v-for="guide in guides">
-                        <guide-component :title="guide.title" :img="guide.img" :address="guide.address"/>
+                    <div class="item" v-for="guide in likedChart.likes">
+                        <guide-component :guide="guide"/>
                     </div>
                 </div>
+
 
             </div>
         </div>
@@ -185,6 +190,7 @@ const {state, next, prev} = useCycleList([
     box-shadow: inset 0 10px 10px -10px rgba(33, 35, 38, 0.05),
     inset 0 -10px 10px -10px rgba(33, 35, 38, 0.05);
     background-color: #F0F4F8;
+      margin-bottom: 96px;
 
     .title {
       margin: 0;
@@ -198,13 +204,12 @@ const {state, next, prev} = useCycleList([
 
   .guides {
     padding: 0 96px;
-    padding-bottom: 48px;
 
     .title {
       display: flex;
       align-items: flex-start;
       margin: 0;
-      padding: 48px 0;
+      padding: 0 0 48px 0;
       color: #102A43;
     }
 
@@ -212,9 +217,8 @@ const {state, next, prev} = useCycleList([
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 64px;
+        padding-bottom: 96px;
 
-      .item {
-      }
     }
 
   }
