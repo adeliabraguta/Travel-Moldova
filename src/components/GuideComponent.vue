@@ -1,29 +1,47 @@
 <script setup>
 import {Icon} from "@iconify/vue";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import {useLikedChart} from "./Likes.js";
-defineProps({
-    "guide":{
+import LikedChart from "./LikedChart.vue";
 
+defineProps({
+    "guide": {
+        type: Object,
+        required: true
     }
 });
 const likedChart = useLikedChart()
+
 </script>
 <template>
-    <div class="component">
-        <img class="img" :src="guide.img"/>
-        <div class="desc">
-            <h2 class="title">{{ guide.title }}</h2>
-            <icon :class="{active: guide.isFav}"  @click="likedChart.toggleFav(guide.id)" class="icon" icon="teenyicons:heart-solid"/>
+  <div class="component">
+    <img
+      class="img"
+      :src="guide.img"
+    >
 
-<!--            <icon v-else="show" @click="show='false'" class="icon" icon=""/>-->
-        </div>
-        <div class="location">
-            <icon class="icon" icon="uil:location-point"></icon>
-            <p class="address">{{ guide.address }}</p>
-        </div>
+    <div class="desc">
+      <h2 class="title">
+        {{ guide.title }}
+      </h2>
+      <icon
+        :class="{active: guide.isFav}"
+        class="icon"
+        icon="teenyicons:heart-solid"
+        @click="likedChart.toggleFav(guide.id)"
+      />
     </div>
+    <div class="location">
+      <icon
+        class="icon"
+        icon="uil:location-point"
+      />
+      <p class="address">
+        {{ guide.address }}
+      </p>
 
+    </div>
+  </div>
 </template>
 <style scoped lang="scss">
 .component {
@@ -58,9 +76,10 @@ const likedChart = useLikedChart()
       color: #BCCCDC;
 
     }
-      .icon.active{
-          color: #2680C2;
-      }
+
+    .icon.active {
+      color: #2680C2;
+    }
   }
 
 
@@ -87,5 +106,7 @@ const likedChart = useLikedChart()
     }
 
   }
+
 }
+
 </style>

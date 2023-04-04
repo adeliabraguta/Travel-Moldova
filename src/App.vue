@@ -4,8 +4,10 @@ import HomePage from './components/HomePage.vue'
 </script>
 
 <template>
-    <NavBar/>
-    <HomePage  />
+  <NavBar />
+  <router-view v-slot="{Component}">
+    <component :is="Component" />
+  </router-view>
 </template>
 
 <style scoped>

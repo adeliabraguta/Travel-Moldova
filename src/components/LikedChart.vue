@@ -5,28 +5,44 @@ import {useLikedChart} from "./Likes.js";
 
 const filter = ref('all')
 defineProps({
-    "guide": {}
+    "guide": {
+        type: Object,
+        required:true
+    }
 });
 const likedChart = useLikedChart()
 </script>
 <template>
-    <div class="component">
-        <img class="img" :src="guide.img"/>
-        <div class="info">
-            <div class="desc">
-                <h2 class="title">{{ guide.title }}</h2>
-            </div>
-            <div class="location">
-                <icon class="icon" icon="uil:location-point"></icon>
-                <p class="address">{{ guide.address }}</p>
-            </div>
-        </div>
-        <div>
-            <icon :class="{active: guide.isFav}" @click="likedChart.toggleFav(guide.id)" class="icon"
-                  icon="teenyicons:heart-solid"/>
-        </div>
+  <div class="component">
+    <img
+      class="img"
+      :src="guide.img"
+    >
+    <div class="info">
+      <div class="desc">
+        <h2 class="title">
+          {{ guide.title }}
+        </h2>
+      </div>
+      <div class="location">
+        <icon
+          class="icon"
+          icon="uil:location-point"
+        />
+        <p class="address">
+          {{ guide.address }}
+        </p>
+      </div>
     </div>
-
+    <div>
+      <icon
+        :class="{active: guide.isFav}"
+        class="icon"
+        icon="teenyicons:heart-solid"
+        @click="likedChart.toggleFav(guide.id)"
+      />
+    </div>
+  </div>
 </template>
 <style scoped lang="scss">
 .component {

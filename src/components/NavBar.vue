@@ -3,34 +3,53 @@ import {computed, defineComponent, ref} from "vue";
 import {Icon} from "@iconify/vue";
 import {useLikedChart} from "./Likes.js";
 import LikedChart from "./LikedChart.vue";
+import TravelStories from "./TravelStories.vue";
 
 const likedChart = useLikedChart()
 const isActive = computed(() => {
-     likedChart.active
+    return likedChart.active
+
 })
 
 </script>
 <template>
-    <div class="nav">
-        <div class="nav-bar">
-            <h1 class="title">Travel</h1>
-            <div class="fav">
-                <p class="number">{{ likedChart.favCount }}</p>
-                <icon :class="{active: isActive}" @click=" likedChart.toggleActive(), favs = !favs" class="icon" icon="teenyicons:heart-solid" />
-
-            </div>
-
-        </div>
-        <div class="list" v-if="favs">
-            <div class="item" v-for="guide in likedChart.favs" >
-
-                <liked-chart :guide="guide"/>
-            </div>
-        </div>
-        <div v-else></div>
+  <div class="nav">
+    <div class="nav-bar">
+      <router-link
+        to="/"
+        class="title"
+      >
+        Travel
+      </router-link>
+      <div class="fav">
+        <p class="number">
+          {{ likedChart.favCount }}
+        </p>
+        <icon
+          :class="{active: isActive}"
+          class="icon"
+          icon="teenyicons:heart-solid"
+          @click=" likedChart.toggleActive(), favs = !favs"
+        />
+      </div>
     </div>
-
-
+    <div
+      v-if="favs"
+      class="list"
+    >
+      <div
+        v-for="(guide, index) in likedChart.favs"
+        :key="index"
+        class="item"
+      >
+        <liked-chart :guide="guide" />
+      </div>
+    </div>
+    <div v-else />
+    <div class="stories">
+      <router-link to="/TravelStories" />
+    </div>
+  </div>
 </template>
 <style scoped lang="scss">
 .nav {
@@ -55,6 +74,8 @@ const isActive = computed(() => {
       font-size: 36px;
       margin: 0;
       color: #102A43;
+        text-decoration: none;
+        font-weight: 700;
     }
 
     .fav {
@@ -73,8 +94,10 @@ const isActive = computed(() => {
         height: 24px;
         color: #27AB83;
           cursor: pointer;
-          &:hover{
+          &:hover,
+          &:active{
               transform: scale(1.2);
+              color: #014D40;
           }
       }
 
