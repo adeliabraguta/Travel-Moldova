@@ -1,6 +1,6 @@
 <template>
-  <div class="description">
-
+  <div class="panama">
+panama
   </div>
 </template>
 

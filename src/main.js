@@ -5,7 +5,6 @@ import App from './App.vue'
 import {createRouter, createWebHistory} from "vue-router";
 import HomePage from "./components/HomePage.vue";
 import TravelStories from "./components/TravelStories.vue";
-import Tipova from "./components/InformationComponents/Tipova.vue";
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -20,10 +19,21 @@ const router = createRouter({
             component: TravelStories
         },
         {
-            path: '/Tipova',
-            name: 'Tipova',
-            component: Tipova
+            path: '/brazil',
+            name: 'brazil',
+            component: ()=> import('./components/Brazil.vue')
         },
+        {
+            path: '/panama',
+            name: 'panama',
+            component: ()=> import('./components/Panama.vue')
+
+        },
+        {
+            path: '/destination/:id',
+            name: 'destination.show',
+            component: () => import('./components/DestinationShow.vue')
+        }
     ]
 })
 

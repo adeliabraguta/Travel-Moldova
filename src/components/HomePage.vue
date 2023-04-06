@@ -7,13 +7,14 @@ import {ref} from "vue";
 import TravelStories from "./TravelStories.vue";
 import Carousel from './CarouselComponent.vue'
 import Slide from './SlideComponent.vue'
+import sourceData from '../data.json'
 // const {state, next, prev} = useCycleList([
 //     carousel1,
 //     carousel2,
 //     carousel3
 // ])
 const likedChart = useLikedChart()
-
+const destinations = sourceData.destinations
 
 </script>
 
@@ -94,27 +95,34 @@ const likedChart = useLikedChart()
           FEATURED TRAVEL GUIDES
         </h2>
         <div class="list">
-                    <div
-                      v-for="(guide,index) in likedChart.likes"
-                      :key="index"
-                      class="item"
-                    >
-<!--          <router-link class="guidee" v-for="guide in likedChart.likes" :key="guide.id" :to="guide.slug">-->
+          <div
+            v-for="(guide,index) in likedChart.likes"
+            :key="index"
+            class="item"
+          >
+            <!--          <router-link class="guidee" v-for="guide in likedChart.likes" :key="guide.id" :to="guide.slug">-->
             <guide-component :guide="guide"/>
 
-<!--          </router-link>-->
+            <!--          </router-link>-->
 
+          </div>
         </div>
-        </div>
-                </div>
       </div>
     </div>
-    <div class="guide">
-      <h1 class="title">
-        Travel Stories
-      </h1>
-    </div>
+  </div>
+  <div class="guide">
+    <h1 class="title">
+      Travel Stories
+    </h1>
+  </div>
+<!--  <div class="stories">-->
+<!--    <router-link v-for="destination in destinations" :key="destination.id" :to="destination.slug">-->
+<!--<h2>{{destination.name}}</h2>-->
+<!--      <img :src="`/images/${destination.image}`"/>-->
+<!--    </router-link>-->
+
 <!--  </div>-->
+
 </template>
 
 <style scoped lang="scss">
@@ -231,6 +239,8 @@ const likedChart = useLikedChart()
     letter-spacing: 1.5px;
     font-size: 14px;
     font-weight: 600;
+    padding: 0 96px;
+
   }
 
   .destinations {
@@ -253,6 +263,7 @@ const likedChart = useLikedChart()
 
 .travel {
   padding-bottom: 48px;
+
 
   .guide {
     box-shadow: inset 0 10px 10px -10px rgba(33, 35, 38, 0.05),
@@ -286,28 +297,13 @@ const likedChart = useLikedChart()
       grid-template-columns: 1fr 1fr 1fr;
       gap: 64px;
       padding-bottom: 96px;
-      position: relative;
+      //position: relative;
+      //height: 30vh;
+      //overflow-x: auto;
+      //overflow-y: hidden;
 
-      .guidee {
-        text-decoration: none;
-      }
-
-      //.hide {
-      //  //display: none;
-      //    position: absolute;
-      //
-      //    .icon{
-      //        color: white;
-      //    }
-      //}
-
-      //.component:hover + .hide {
-      //  //display: block;
-      //  background-color: #014D40
-      //}
 
     }
-
   }
 }
 

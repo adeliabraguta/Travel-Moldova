@@ -15,15 +15,21 @@ const likedChart = useLikedChart()
 </script>
 <template>
   <div class="component">
+    <router-link class="route" :to="{name:'destination.show', params:{id: guide.id}}" :key="guide.id">
     <img
       class="img"
       :src="guide.img"
     >
+    </router-link>
+
 
     <div class="desc">
-      <h2 class="title">
-        {{ guide.title }}
-      </h2>
+      <router-link class="route" :to="{name:'destination.show', params:{id: guide.id}}" :key="guide.id">
+        <h2 class="title">
+          {{ guide.title }}
+        </h2>
+      </router-link>
+
       <icon
         :class="{active: guide.isFav}"
         class="icon"
@@ -62,6 +68,11 @@ const likedChart = useLikedChart()
     align-items: center;
     align-content: center;
     justify-content: space-between;
+
+    .route {
+      text-decoration: none;
+
+    }
 
     .title {
       color: #486581;

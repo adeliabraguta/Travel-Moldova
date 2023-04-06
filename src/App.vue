@@ -5,6 +5,7 @@ import HomePage from './components/HomePage.vue'
 
 <template>
   <NavBar />
+<!--  <home-page/>-->
   <router-view v-slot="{Component}">
     <component :is="Component" />
   </router-view>

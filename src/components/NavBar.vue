@@ -19,8 +19,11 @@ const isActive = computed(() => {
         to="/"
         class="title"
       >
-        Travel
+        <img class="img" src="../assets/moldova1.png">
+        <h1 class="den">Travel Moldova</h1>
       </router-link>
+
+
       <div class="fav">
         <p class="number">
           {{ likedChart.favCount }}
@@ -71,11 +74,21 @@ const isActive = computed(() => {
       padding: 0 24px;
 
     .title {
-      font-size: 36px;
       margin: 0;
       color: #102A43;
         text-decoration: none;
-        font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .img{
+      height: 48px;
+      width: 48px;
+    }
+    .den{
+      font-size: 36px;
+      font-weight: 700;
+
     }
 
     .fav {

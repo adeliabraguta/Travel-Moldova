@@ -1,7 +1,6 @@
 <template>
   <div class="stories">
-<!--{{likedChart.likes.id}}-->
-<!--    {{ $route.params.id }}-->
+ssfs
   </div>
 </template>
 
@@ -21,6 +20,6 @@ const likedChart = useLikedChart()
 
 <style scoped>
 .stories{
-    padding: 500px;
+
 }
 </style>
