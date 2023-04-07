@@ -2,132 +2,154 @@
 import {useCycleList} from "@vueuse/core";
 import {Icon} from "@iconify/vue";
 import GuideComponent from "./GuideComponent.vue";
-import {useLikedChart} from "./Likes.js";
-import {ref} from "vue";
+import {useData} from "./Likes.js";
 import TravelStories from "./TravelStories.vue";
 import Carousel from './CarouselComponent.vue'
 import Slide from './SlideComponent.vue'
-import sourceData from '../data.json'
+import StoryData from '../data.json'
 // const {state, next, prev} = useCycleList([
 //     carousel1,
 //     carousel2,
 //     carousel3
 // ])
-const likedChart = useLikedChart()
-const destinations = sourceData.destinations
+const destinationsData = useData()
+const storyDestinations = StoryData.stories
 
 </script>
 
 <template>
-  <div class="home">
-    <div class="title">
-      <p class="desc">
-        TRAVEL FOR GOOD
-      </p>
-      <h1 class="banner">
-        Moldova is Out There
-      </h1>
-    </div>
-    <Carousel
-      v-slot="{currentSlide}"
-      class="carousel"
-    >
-      <Slide
-        v-for="(slide, index) in likedChart.carousel"
-        :key="index"
-      >
-        <div
-          v-show="currentSlide === index + 1"
-          class="slide-info"
-        >
-          <img :src="slide.img">
+  <div>
+    <div class="home">
+      <div class="line">
+        <div class="title">
+          <p class="desc">
+            TRAVEL FOR GOOD
+          </p>
+          <h1 class="banner">
+            Moldova is Out There
+          </h1>
         </div>
-      </Slide>
-    </Carousel>
-
-
-    <!--        <div class="carouselslide" @click="next()">-->
-    <!--            <transition>-->
-    <!--                <img class="imgs" :src="state" alt="photo" :key="state"/>-->
-    <!--            </transition>-->
-    <!--            <div class="buttons">-->
-    <!--                <div class="btn " @click="prev()">-->
-    <!--                    <icon class="btn-icon" icon="uil:angle-left-b"/>-->
-    <!--                </div>-->
-    <!--                <div class="btn " @click="next()">-->
-    <!--                    <icon class="btn-icon" icon="uil:angle-right-b"/>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <div class="destination">
-      <p class="desc">
-        POPULAR DESTINATIONS
-      </p>
-      <ul class="destinations">
-        <li class="element">
-          Tipova Monastery
-        </li>
-        <li class="element">
-          Saharna
-        </li>
-        <li class="element">
-          Capriana Monastery
-        </li>
-        <li class="element">
-          Soroca Fortress
-        </li>
-        <li class="element">
-          Old Orhei
-        </li>
-        <li class="element">
-          Purcari Winery
-        </li>
-      </ul>
-    </div>
-    <div class="travel">
-      <div class="guide">
-        <h1 class="title">
-          Travel Guides
-        </h1>
       </div>
-      <div class="guides">
-        <h2 class="title">
-          FEATURED TRAVEL GUIDES
-        </h2>
-        <div class="list">
+
+      <Carousel
+        v-slot="{currentSlide}"
+        class="carousel"
+      >
+        <Slide
+          v-for="(slide, index) in destinationsData.carousel"
+          :key="index"
+        >
           <div
-            v-for="(guide,index) in likedChart.likes"
-            :key="index"
-            class="item"
+            v-show="currentSlide === index + 1"
+            class="slide-info"
           >
-            <!--          <router-link class="guidee" v-for="guide in likedChart.likes" :key="guide.id" :to="guide.slug">-->
-            <guide-component :guide="guide"/>
+            <img :src="slide.img">
+          </div>
+        </Slide>
+      </Carousel>
 
-            <!--          </router-link>-->
 
+      <!--        <div class="carouselslide" @click="next()">-->
+      <!--            <transition>-->
+      <!--                <img class="imgs" :src="state" alt="photo" :key="state"/>-->
+      <!--            </transition>-->
+      <!--            <div class="buttons">-->
+      <!--                <div class="btn " @click="prev()">-->
+      <!--                    <icon class="btn-icon" icon="uil:angle-left-b"/>-->
+      <!--                </div>-->
+      <!--                <div class="btn " @click="next()">-->
+      <!--                    <icon class="btn-icon" icon="uil:angle-right-b"/>-->
+      <!--                </div>-->
+      <!--            </div>-->
+      <!--        </div>-->
+      <div class="destination">
+        <p class="desc">
+          POPULAR DESTINATIONS
+        </p>
+        <ul class="destinations">
+          <li class="element">
+            Tipova Monastery
+          </li>
+          <li class="element">
+            Saharna
+          </li>
+          <li class="element">
+            Capriana Monastery
+          </li>
+          <li class="element">
+            Soroca Fortress
+          </li>
+          <li class="element">
+            Old Orhei
+          </li>
+          <li class="element">
+            Purcari Winery
+          </li>
+        </ul>
+      </div>
+      <div class="travel">
+        <div class="guide">
+          <h1 class="title">
+            Travel Destinations
+          </h1>
+        </div>
+        <div class="guides">
+          <p class="about">Despite its small area, small population,
+            Moldova has a fairly rich history and culture.
+            Attractions of Moldova are unique in its kind,
+            and each of them deserves attention. During its existence,
+            the country has gone through several historical transformations.
+            What to see in Moldova is described below. </p>
+
+          <h2 class="title">
+            FEATURED TRAVEL DESTINATIONS
+          </h2>
+          <div class="list">
+            <div
+              v-for="(destination,index) in destinationsData.destinations"
+              :key="index"
+              class="item"
+            >
+              <guide-component :destination="destination"/>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="guide">
-    <h1 class="title">
-      Travel Stories
-    </h1>
-  </div>
-<!--  <div class="stories">-->
-<!--    <router-link v-for="destination in destinations" :key="destination.id" :to="destination.slug">-->
-<!--<h2>{{destination.name}}</h2>-->
-<!--      <img :src="`/images/${destination.image}`"/>-->
-<!--    </router-link>-->
+      <div class="guide">
+        <h1 class="title">
+          Travel Stories
+        </h1>
+      </div>
+    <div class="travel-stories">
+      <div class="desc-div">
+        <p class="desc">Here you can discover fascinating travel stories about Moldova.
+          This will not leave you indifferent.
+          Moldova is about wonderful nature and interesting adventures.</p>
+      </div>
 
-<!--  </div>-->
+    <div class="stories">
+      <div class="story"  v-for="story in storyDestinations">
+        <TravelStories :story="story"></TravelStories>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+  </div>
 
 </template>
 
 <style scoped lang="scss">
 .home {
-  padding-top: 128px;
+  padding-top: 96px;
+  color: #102A43;
+}
+
+.line {
+  border-top: solid #102A43;
+  margin: 0 48px;
+  padding-top: 32px;
 }
 
 .title {
@@ -141,7 +163,7 @@ const destinations = sourceData.destinations
 
   .desc {
     margin: 0;
-    color: #186FAF;
+    color: #079A82;
     letter-spacing: 1.5px;
     font-size: 14px;
     font-weight: 600;
@@ -149,7 +171,7 @@ const destinations = sourceData.destinations
 
   .banner {
     margin: 0;
-    color: #014D40;
+    color: #003E6B;
     font-weight: 600;
   }
 }
@@ -160,7 +182,6 @@ const destinations = sourceData.destinations
 
   .slide-info {
     position: absolute;
-
     left: 0;
     width: 100%;
     height: 65vh;
@@ -235,7 +256,7 @@ const destinations = sourceData.destinations
 
   .desc {
     margin: 0;
-    color: #186FAF;
+    color: #079A82;
     letter-spacing: 1.5px;
     font-size: 14px;
     font-weight: 600;
@@ -262,7 +283,6 @@ const destinations = sourceData.destinations
 }
 
 .travel {
-  padding-bottom: 48px;
 
 
   .guide {
@@ -274,15 +294,26 @@ const destinations = sourceData.destinations
     .title {
       margin: 0;
       padding: 64px 0;
-      color: #014D40;
+      color: #003E6B;
       font-weight: 600;
-
-
+      font-size: 30px;
     }
   }
 
   .guides {
     padding: 0 96px;
+
+    .about {
+      margin: 0 64px 96px 64px;
+      padding: 0 64px;
+      text-align: center;
+      font-size: 18px;
+      border-right: solid #BCCCDC;
+      border-left: solid #BCCCDC;
+      display: flex;
+      align-items: center;
+
+    }
 
     .title {
       display: flex;
@@ -290,6 +321,7 @@ const destinations = sourceData.destinations
       margin: 0;
       padding: 0 0 48px 0;
       color: #102A43;
+      letter-spacing: 1.2px;
     }
 
     .list {
@@ -311,15 +343,46 @@ const destinations = sourceData.destinations
   box-shadow: inset 0 10px 10px -10px rgba(33, 35, 38, 0.05),
   inset 0 -10px 10px -10px rgba(33, 35, 38, 0.05);
   background-color: #F0F4F8;
-  margin-bottom: 96px;
 
   .title {
     margin: 0;
     padding: 64px 0;
-    color: #014D40;
+    color: #003E6B;
     font-weight: 600;
+    font-size: 30px;
 
 
   }
 }
+.travel-stories{
+  padding: 96px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  justify-content: center;
+  align-items: center;
+  .desc{
+    margin: 0;
+    padding: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid #BCCCDC;
+    border-left: solid #BCCCDC;
+    font-size: 18px;
+  }
+  .stories{
+    .story{
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 64px;
+
+    }
+  }
+
+}
+
 </style>

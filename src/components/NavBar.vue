@@ -1,13 +1,13 @@
 <script setup>
 import {computed, defineComponent, ref} from "vue";
 import {Icon} from "@iconify/vue";
-import {useLikedChart} from "./Likes.js";
+import {useData} from "./Likes.js";
 import LikedChart from "./LikedChart.vue";
 import TravelStories from "./TravelStories.vue";
 
-const likedChart = useLikedChart()
+const destinationsData = useData()
 const isActive = computed(() => {
-    return likedChart.active
+    return destinationsData.active
 
 })
 
@@ -19,38 +19,47 @@ const isActive = computed(() => {
         to="/"
         class="title"
       >
-        <img class="img" src="../assets/moldova1.png">
+        <img class="img" src="../assets/moldova4.png">
         <h1 class="den">Travel Moldova</h1>
       </router-link>
-
-
+      <div class="right">
+      <div class="links">
+      <router-link class="link" to="/">
+        <h2 class="title">Destinations</h2>
+      </router-link>
+      <router-link class="link" to="/">
+        <h2 class="title">Stories</h2>
+      </router-link>
+      </div>
       <div class="fav">
         <p class="number">
-          {{ likedChart.favCount }}
+          {{ destinationsData.favCount }}
         </p>
         <icon
           :class="{active: isActive}"
           class="icon"
           icon="teenyicons:heart-solid"
-          @click=" likedChart.toggleActive(), favs = !favs"
+          @click=" destinationsData.toggleActive(), favs = !favs"
         />
       </div>
+      </div>
+
     </div>
     <div
       v-if="favs"
       class="list"
     >
       <div
-        v-for="(guide, index) in likedChart.favs"
+        v-for="(destination, index) in destinationsData.favs"
         :key="index"
         class="item"
       >
-        <liked-chart :guide="guide" />
+        <liked-chart :destination="destination"/>
       </div>
     </div>
-    <div v-else />
+    <div v-else/>
     <div class="stories">
-      <router-link to="/TravelStories" />
+      <router-link to="/TravelStories"/>
     </div>
   </div>
 </template>
@@ -61,60 +70,90 @@ const isActive = computed(() => {
   position: fixed;
   z-index: 1;
   background-color: white;
-  border-bottom: solid white;
+  opacity: 90%;
+  //border-bottom: solid white;
 
   .nav-bar {
-    border-bottom: solid #102A43;
+    //border-bottom: solid #102A43;
     margin: 0 48px;
     height: 96px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     align-content: center;
-      padding: 0 24px;
+    padding: 0 24px;
 
     .title {
       margin: 0;
       color: #102A43;
-        text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .img{
-      height: 48px;
-      width: 48px;
-    }
-    .den{
-      font-size: 36px;
-      font-weight: 700;
-
-    }
-
-    .fav {
+      text-decoration: none;
       display: flex;
       align-items: center;
       gap: 12px;
 
-      .number {
-          color: #27AB83;
+      &:hover,
+      &:active {
+        transform: scale(1.01);
+      }
+    }
+
+    .img {
+      height: 36px;
+      width: 36px;
+
+    }
+
+    .den {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 1.1px;
+
+    }
+    .right{
+      display: flex;
+      gap: 128px;
+      .links{
+        display: flex;
+        gap: 64px;
+        align-items: center;
+        .link{
+          text-decoration: none;
+          .title{
+            letter-spacing: 1.1px;
+            font-size: 24px;
+            font-weight: 600;
+
+          }
+        }
+
+      }
+      .fav {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .number {
+          color: #4098D7;
           font-size: 24px;
 
-      }
+        }
 
-      .icon {
-        width: 24px;
-        height: 24px;
-        color: #27AB83;
+        .icon {
+          width: 24px;
+          height: 24px;
+          color: #4098D7;
           cursor: pointer;
-          &:hover,
-          &:active{
-              transform: scale(1.2);
-              color: #014D40;
-          }
-      }
 
+          &:hover,
+          &:active {
+            transform: scale(1.2);
+            color: #0A558C;
+          }
+        }
+
+      }
     }
+
   }
 
   .list {

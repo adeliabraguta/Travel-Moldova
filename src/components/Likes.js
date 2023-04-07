@@ -22,9 +22,10 @@ import padureadomneasca3 from "../assets/padureadomneasca3.jpg"
 import carousel1 from "../assets/carousel1.jpg"
 import carousel2 from "../assets/carousel2.jpg"
 import carousel3 from "../assets/carousel3.jpg"
+import Data from "../data.json"
+import sourceData from "../data.json";
 
-
-export const useLikedChart = defineStore('likedChart', {
+export const useData = defineStore('destinationsData', {
     state: () => ({
         isActive: false,
         carousel: [{
@@ -34,7 +35,7 @@ export const useLikedChart = defineStore('likedChart', {
         },{
             img: carousel3
         }],
-        likes: [ {
+        destinations: [{
             id: 6,
             title: "Princely Forest Nature Reserve",
             slug: "princely-forest-nature-reserve",
@@ -123,30 +124,30 @@ export const useLikedChart = defineStore('likedChart', {
                 "The oldest complex is the Church of the Feast of the Holy Cross (11th century).  The remaining two are the Church of St Nicholas (14th century) and Horodiste (16th century). If you follow the path past the caves you’ll enjoy a nice nature hike that ends in a lovely waterfall.\n" +
                 "\n" +
                 "Within each cave are monk’s cells, enough for up to 700, though there are less than 20 monks living there now.",
-        },]
+        },],
     }),
     getters: {
         favs() {
-            return this.likes.filter(l => l.isFav);
+            return this.destinations.filter(l => l.isFav);
         },
         favCount() {
-            return this.likes.reduce((prev, curr) => {
+            return this.destinations.reduce((prev, curr) => {
                 return curr.isFav ? prev + 1 : prev
             }, 0)
         },
         totalCount: (state) => {
-            return state.likes.length
+            return state.destinations.length
         },
         active(state) {
             return state.isActive
         },
         component(){
-            return this.likes.filter(l => l.accesed)
+            return this.destinations.filter(l => l.accesed)
         }
     },
     actions: {
         toggleFav(id) {
-            const like = this.likes.find(t => t.id === id)
+            const like = this.destinations.find(t => t.id === id)
             like.isFav = !like.isFav
         },
         toggleActive(isActive, id) {
@@ -154,7 +155,7 @@ export const useLikedChart = defineStore('likedChart', {
 
         },
         toggleAccesed(id){
-            const acces = this.likes.find(t => t.id ===id)
+            const acces = this.destinations.find(t => t.id ===id)
             acces.accesed = !acces.accesed
         }
 

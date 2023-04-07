@@ -1,28 +1,33 @@
 <script setup>
 import {Icon} from "@iconify/vue";
 import {ref} from "vue";
-import {useLikedChart} from "./Likes.js";
+import {useData} from "./Likes.js";
 
 const filter = ref('all')
 defineProps({
-    "guide": {
+    "destination": {
         type: Object,
         required:true
     }
 });
-const likedChart = useLikedChart()
+const destinationsData = useData();
 </script>
 <template>
   <div class="component">
+    <router-link class="route" :to="{name:'destination.show', params:{id: destination.id, slug:destination.slug}}" :key="destination.id">
     <img
       class="img"
-      :src="guide.img"
+      :src="destination.img"
     >
+    </router-link>
     <div class="info">
       <div class="desc">
+        <router-link class="route" :to="{name:'destination.show', params:{id: destination.id, slug:destination.slug}}" :key="destination.id">
+
         <h2 class="title">
-          {{ guide.title }}
+          {{ destination.title }}
         </h2>
+        </router-link>
       </div>
       <div class="location">
         <icon
@@ -30,16 +35,16 @@ const likedChart = useLikedChart()
           icon="uil:location-point"
         />
         <p class="address">
-          {{ guide.address }}
+          {{ destination.address }}
         </p>
       </div>
     </div>
     <div>
       <icon
-        :class="{active: guide.isFav}"
+        :class="{active: destination.isFav}"
         class="icon"
         icon="teenyicons:heart-solid"
-        @click="likedChart.toggleFav(guide.id)"
+        @click="destinationsData.toggleFav(destination.id)"
       />
     </div>
   </div>
@@ -71,6 +76,10 @@ const likedChart = useLikedChart()
       margin: 0;
       font-weight: 600;
       font-size: 20px;
+      &:active,
+      &:hover{
+        color: #243B53;
+      }
     }
 
 
@@ -80,6 +89,7 @@ const likedChart = useLikedChart()
     height: 20px;
     width: 20px;
     color: #BCCCDC;
+    cursor: pointer;
 
   }
 
@@ -109,6 +119,9 @@ const likedChart = useLikedChart()
 
     }
 
+  }
+  .route{
+    text-decoration: none;
   }
 }
 </style>
