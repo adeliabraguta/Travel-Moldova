@@ -1,5 +1,4 @@
 import {defineStore} from "pinia";
-import {ref} from 'vue'
 import tipova from "../assets/tipova.jpg"
 import tipova2 from "../assets/tipova2.jpg"
 import tipova3 from "../assets/tipova3.jpg"
@@ -18,12 +17,9 @@ import orhei3 from "../assets/orhei3.jpg"
 import padureadomneasca from "../assets/padureadomneasca.jpg"
 import padureadomneasca2 from "../assets/padureadomneasca2.jpg"
 import padureadomneasca3 from "../assets/padureadomneasca3.jpg"
-
 import carousel1 from "../assets/carousel1.jpg"
 import carousel2 from "../assets/carousel2.jpg"
 import carousel3 from "../assets/carousel3.jpg"
-import Data from "../data.json"
-import sourceData from "../data.json";
 
 export const useData = defineStore('destinationsData', {
     state: () => ({
@@ -36,7 +32,7 @@ export const useData = defineStore('destinationsData', {
             img: carousel3
         }],
         destinations: [{
-            id: 6,
+            id: 1,
             title: "Princely Forest Nature Reserve",
             slug: "princely-forest-nature-reserve",
             address: "Glodeni and Falesti districts",
@@ -91,7 +87,7 @@ export const useData = defineStore('destinationsData', {
             address: "Capriana commune, Straseni district",
             isFav: false,
             accesed: false,
-            generalInformation: "The winery went through an intense modernization process, being endowed with best advanced equipment for wine production, storage and bottling, that are unique in Moldova.",
+            generalInformation: "Sitting in a lush green forest in Capriana is one of the oldest monasteries in Moldova.  Founded in the 15th century by Alexander the Good, it was once the home of the Moldavian bishop as well as Chiprian, one of the first Moldavian poets. It houses the largest convent library in the country and after years of neglect, was reopened in 1989 as a symbol of national revival. While you’re there, you can make some stops nearby to visit the oak tree of Stefan the Great and Codru, the oldest nature reserve in the country.",
 
 
         }, {
@@ -110,7 +106,7 @@ export const useData = defineStore('destinationsData', {
 
 
         }, {
-            id: 1,
+            id: 6,
             title: "Tipova Monastery",
             slug: "tipova",
             img: tipova,
@@ -158,6 +154,5 @@ export const useData = defineStore('destinationsData', {
             const acces = this.destinations.find(t => t.id ===id)
             acces.accesed = !acces.accesed
         }
-
     }
 })

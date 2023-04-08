@@ -28,12 +28,12 @@ const router = createRouter({
             component: () => import('./components/StoryComponent.vue')
         }
     ],
-    scrollBehavior(to, from , savedPosition){
-        return savedPosition || new Promise((resolve)=>{
-            setTimeout(()=> resolve({top:0}), 400)
+    scrollBehavior(to, from, savedPosition) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ left: 0, top: 0 })
+            }, 400)
         })
-        return {top:null, left:null, behavior:null}
     }
 })
-
 createApp(App).use(createPinia()).use(router).mount('#app')

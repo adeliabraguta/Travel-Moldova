@@ -1,21 +1,17 @@
 <script setup>
-import {useData} from "./Likes.js";
-import { useRoute } from 'vue-router'
-
 defineProps({
     "story": {
         type: Object,
         required: true
     }
 });
-// const route = useRoute();
 </script>
 
 <template>
   <div>
     <div class="story">
       <img class="img" :src="`/storyImages/${story.img}`"/>
-      <div class="info">
+      <div class="question">
         <router-link class="link" :to="{name:'story.show' , params: {id: story.id, slug: story.slug}}" :key="story.id">
           <h1 class="title">{{story.title}} </h1>
         </router-link>
@@ -24,15 +20,10 @@ defineProps({
           <h2 class="author">BY {{story.author}}</h2>
           <p class="date">{{story.date}}</p>
         </div>
-
       </div>
-
     </div>
-
   </div>
 </template>
-
-
 
 <style scoped lang="scss">
 .story{
@@ -46,7 +37,7 @@ defineProps({
     object-fit: cover;
     opacity: 40%;
   }
-  .info{
+  .question{
     position: absolute;
     top: 50%;
     transform: translate(0%, -50%);
@@ -67,7 +58,7 @@ defineProps({
       display: inline-block;
       padding: 0 12px 0 0;
       &:hover{
-        border-top: solid #2DCCA7;
+        //border-top: solid #2DCCA7;
         border-bottom: solid #2DCCA7;
       }
     }
@@ -94,7 +85,5 @@ defineProps({
       }
     }
   }
-
-
 }
 </style>

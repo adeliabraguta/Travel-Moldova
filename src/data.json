@@ -6,7 +6,14 @@
     "date": "APRIL 13, 2022",
     "img": "tiraspol.jpg",
     "description": "We could discover Transnistria, on a visit to Tiraspol, just the week before the Russian troops broke into the Ukrainian borders.",
-    "author": "DANIGARCIAGIMENEZ"
+    "author": "DANIGARCIAGIMENEZ",
+    "desc": "We could discover Transnistria, on a visit to Tiraspol, just the week before the Russian troops broke into the Ukrainian borders. Transnistria is a country that doesn’t exist. Or better said, it is not recognized by almost no other country in the world, besides a few more in similar condition. \n\nWe were in Chisinau celebrating Saint Valentine’s day. As other thousands we have chosen Moldova to do so. We decided to add a bit more of our way of romanticism. We had heard before that no United Nations member recognises Transnistria sovereignty and the region is officially part of Moldova to UN. As of 2011, only Abkhazia, the Republic of Artsakh and South Ossetia, all of them non-recognized countries as well, recognise the independence of this particular self-declared Republic. Once in Moldova, we asked how it is in this territory and they told us that it still works de facto as a Soviet Republic since they never accepted the failure of the union. For us it was interesting enough to decide to go. \n\nMoldova is a small country and if you have some extra time to spend you can take a look at Tiraspol. So far, it is easy and cheap to arrive, you can stay there for the night or go and come back on the same day. If you want to make true the famous song of the Beatles “Back to the USSR”, keep reading, we’ll explain to you how. ",
+    "images": [{
+      "img1": "tiraspol.jpg"
+    },{
+      "img1": "transnistria.jpg"
+
+    }]
     },
     {
       "id": 2,
@@ -15,7 +22,49 @@
       "date": "MARCH 20, 2022",
       "img": "cricova.jpg",
       "description": "If you visit the Republic of Moldova, you can not miss a visit of most famous Moldovan wine cellars. An excellent base for wine lovers.",
-      "author": "DANIGARCIAGIMENEZ"
+      "author": "DANIGARCIAGIMENEZ",
+      "desc": " If you visit the Republic of Moldova, you can not miss a visit of most famous Moldovan wine cellars. Probably, in your tour in the country you plan to stay some days in Chisinau, the capital. The capital of the country can be an excellent base for wine lovers who want to visit the historic and very famous Cricova. Moldova is a wine country. The wine has been one of the most important resources of its economy and especially critical during the soviet period. The country has 4 regions for the production of wine products with Protected Geographical Indication. Those regions are Codru, Ștefan Vodă, Valul lui Traian and Divin. There, Moldovans crop and process plenty of local and european varieties of grapes. ",
+      "images": [{
+        "img1": "cricova.jpg"
+      },{
+        "img1": "cricova2.jpg"
+
+      }]
+
     }
+  ],
+  "accordion": [{
+    "question": "Where is Moldova?",
+    "answer": "Moldova is a country in Eastern Europe, bordered by Romania to the west and Ukraine to the rest of the directions. ",
+    "open": false
+  },{
+    "question": "What is the capital of Moldova?",
+    "answer": "The capital of Moldova is Chișinău.",
+    "open": false
+  },{
+    "question": "What are the languages of Moldova?",
+    "answer": "The major languages of Moldova are Moldovan (55%), Romanian (24%), Russian (15%), Gagauz (3%) and Ukrainian (3%).",
+    "open": false
+  },{
+    "question": "What are the religions of Moldova?",
+    "answer": "The major languages of Moldova are Moldovan (55%), Romanian (24%), Russian (15%), Gagauz (3%) and Ukrainian (3%).",
+    "open": false
+  },{
+    "question": "Is Moldova safe?",
+    "answer": "Small crime is spreading in Moldova. There are pickpockets who target tourists. Sometimes robbers can be violent so it is better not to be alone late outside in the dark. Underground economy and women traffic are serious problems in Moldova but very rarely could affect tourists. ",
+    "open": false
+  },{
+    "question": "Is Transnistria a country?",
+    "answer": "No, Transnistria is not an official country. Transnistria is a breakaway state that is still a part of Moldova according to the International community. Nevertheless, there is a proper border to get in and the region functions as a proper state de facto actually. Transnistria has its own government, laws and currency. You should learn about their laws and get their currency to be able to spend some time inside. ",
+    "open": false
+  },{
+    "question": "Is Transnistria safe for tourists?",
+    "answer": "Yes, Transnsitria is normally reasonably safe for tourists. It used to be 100% safe for visitors but unfortunately, due to the war in Ukraine and since the territory is clearly Russia supporter, the safety conditions of the country are not as stable as they used to be. ",
+    "open": false
+  },{
+    "question": "When is the best period to visit Moldova? ",
+    "answer": "The best period to visit Moldova is Spring and Autumn. Nevertheless, all year long is a good period to visit Moldova. Winters are mild and summers are long, warm and dry. ",
+    "open": false
+  }
   ]
 }
