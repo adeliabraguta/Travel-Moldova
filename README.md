@@ -1,7 +1,13 @@
-# Vue 3 + Vite
+# Travel Moldova
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A small project developed in Vue.js that awakens the desire to start a journey thorugh Moldova. 
 
-## Recommended IDE Setup
+## Instalation
+1. Download the project
+2. Run command:
+```npm run dev```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![screencapture-localhost-8080-2023-05-02-19_34_29](https://user-images.githubusercontent.com/89931941/235728787-1261fe25-3e82-46c2-8001-9f2e54a5687e.png)
+
+![screencapture-localhost-8080-destination-2-soroca-fortress-2023-05-02-19_36_12](https://user-images.githubusercontent.com/89931941/235729115-7cf29fdb-375c-4a43-aa43-826fdb8e735b.png)
+![screencapture-localhost-8080-story-2-cricova-winery-2023-05-02-19_36_51](https://user-images.githubusercontent.com/89931941/235729225-8038c409-6b58-40fe-90f3-a144f644d88b.png)
