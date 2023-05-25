@@ -1,5 +1,5 @@
 # 🌍 Travel Moldova
-A small project developed in Vue.js that awakens the desire to start a journey thorugh Moldova. 
+This wonderful project awakens the desire to start a journey thorugh Moldova. 
 
 ## ⚙️ Tech stack
 ✔️ VueJs <br>
