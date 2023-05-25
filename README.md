@@ -1,5 +1,5 @@
 # 🌍 Travel Moldova
-This wonderful project awakens the desire to start a journey thorugh Moldova. 
+This wonderful project awakens the desire to start a journey through Moldova. 
 
 ## ⚙️ Tech stack
 ✔️ VueJs <br>
